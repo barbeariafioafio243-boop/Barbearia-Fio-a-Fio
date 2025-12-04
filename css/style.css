@@ -1,0 +1,243 @@
+:root {
+  --bg:#000;
+  --card:#151515;
+  --text:#f3f5f7;
+  --muted:#9aa3b2;
+  --brand:#e49042;
+  --accent:#a86e02;
+  --radius:12px;
+  --gap:14px;
+}
+
+/* RESET */
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui, -apple-system, Segoe UI, Roboto;
+  line-height:1.45;
+}
+img { display:block; max-width:100%; }
+
+/* ===========================
+   BANNER (TOP DO SITE)
+=========================== */
+/* ===== Banner responsivo ===== */
+.banner {
+  width: 100%;
+  height: 45vh; /* você escolhe o tamanho */
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  /* CORREÇÃO: Usamos 'contain' para garantir que a imagem inteira apareça.
+     Isso pode deixar espaços vazios (barras pretas) nas laterais ou em cima/embaixo,
+     mas a imagem não será cortada e nem distorcida.
+  */
+  object-fit: contain; 
+}
+
+/* ===========================
+   HEADER FIXO
+=========================== */
+header {
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.header-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+}
+
+.title {
+  font-size:1.3rem;
+  font-weight:700;
+}
+
+.btn {
+  background:green;
+  padding:8px 12px;
+  border-radius:999px;
+  color:#fff;
+  font-weight:700;
+  font-size:.9rem;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+.container {
+  max-width:820px;
+  margin:0 auto;
+  padding:16px;
+}
+
+/* ===========================
+   SEÇÕES
+=========================== */
+section {
+  background:var(--card);
+  padding:var(--gap);
+  border-radius:var(--radius);
+  margin-top:16px;
+}
+
+h2 {
+  font-size:1.4rem;
+  color:var(--brand);
+  margin-bottom:10px;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:4px;
+}
+
+/* ===========================
+   HERO DA DESCRIÇÃO
+=========================== */
+.hero {
+  margin:10px 0;
+  overflow:hidden;
+  border-radius:var(--radius);
+}
+
+.hero img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.caption {
+  padding:8px 10px;
+  color:var(--muted);
+  background:rgba(0,0,0,0.4);
+}
+
+/* ===========================
+   LISTA DE CORTES
+=========================== */
+.list {
+  list-style:none;
+  display:grid;
+  gap:12px;
+}
+
+.item {
+  background:#0d0d0d;
+  border-radius:var(--radius);
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-left:4px solid var(--accent);
+}
+
+.name { font-weight:700; }
+.desc { color:var(--muted); font-size:.9rem; }
+.price {
+  background:rgba(255,185,60,0.15);
+  color:var(--brand);
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+/* ===========================
+   GALERIA
+=========================== */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.gallery img {
+  height:110px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+  transition:transform .2s;
+}
+
+.gallery img:hover {
+  transform:scale(1.03);
+}
+
+/* ===========================
+   MODAL (ZOOM)
+=========================== */
+.modal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.modal-content {
+  max-width:90%;
+  max-height:90%;
+}
+
+.fechar {
+  position:absolute;
+  top:20px; right:25px;
+  font-size:40px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ===========================
+   CONTATO
+=========================== */
+.contact {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.chip {
+  background:#0d0d0d;
+  padding:10px 12px;
+  border-radius:999px;
+  color:var(--text);
+}
+
+/* ===========================
+   NAV INFERIOR FIXA (MOBILE)
+=========================== */
+nav.sticky {
+  position:fixed;
+  bottom:0; left:0; right:0;
+  display:flex;
+  justify-content:space-around;
+  background:rgba(0,0,0,0.9);
+  padding:10px;
+  z-index:1000;
+}
+
+nav.sticky a {
+  background:#252525;
+  padding:8px 14px;
+  border-radius:999px;
+  color:#fff;
+}
+
+/* ===========================
+   DESKTOP
+=========================== */
+@media (min-width:600px) {
+  nav.sticky { display:none; }
+  .banner { height:45vh; }
+  .gallery { grid-template-columns:repeat(4,1fr); }
+  h2 { font-size:1.8rem; }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fio a Fio</title>
+  <meta name="description" content="Barbearia — cortes, barba e contato. Página única, rápida e pensada para mobile." />
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+
+<!-- iOS / Apple touch -->
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+
+<!-- Android / PWA (opcional) -->
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- cor da barra no mobile / tema -->
+<meta name="theme-color" content="#000000">
+
+  <!-- Importando o CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+ <div class="banner">
+  <img src="img/baner.jpg" alt="Banner" />
+</div>
+
+  <header>
+    <div class="header-inner">
+      <div class="cta-top">
+        <a class="btn" href="https://wa.me/4288227069" target="_blank" class="chip">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Título + Imagem -->
+    <section id="topo">
+      <h2>Cortes, Barba & Estilo</h2>
+        <div class="hero">
+        <div class="caption">Tradição e modernidade no seu visual.</div>
+        </div>
+      <p>Bem-vindo à <strong>Barbearia Fio a Fio</strong>. Atendimento de qualidade e aquele capricho que faz diferença.</p>
+    </section>
+
+    <!-- Lista de cortes -->
+    <section id="cortes">
+      <h2>Tipos de cortes</h2>
+      <ul class="list">
+        <li class="item">
+          <div class="info">
+            <span class="name">Degradê (Fade)</span>
+            <span class="desc">Acabamento na navalha</span>
+          </div>
+          <span class="price">R$ 30</span>
+        </li>
+        <li class="item">
+          <div class="info">
+            <span class="name">Corte Social</span>
+            <span class="desc">Clássico e versátil</span>
+          </div>
+          <span class="price">R$ 25</span>
+        </li>
+        <li class="item">
+          <div class="info">
+            <span class="name">Platinado</span>
+            <span class="desc">pintura</span>
+          </div>
+          <span class="price">R$ 150</span>
+        </li>
+      </ul>
+    </section>
+
+  
+
+    <!-- Galeria -->
+    <section id="galeria">
+    <h2>Galeria</h2>
+    <div class="gallery">
+      <img src="img/degrade.jpg" alt="Corte com degradê" class="zoomable" />
+      <img src="img/social.jpg" alt="Navalha e pente" class="zoomable" />
+      <img src="img/platinado.jpg" alt="Barbearia moderna" class="zoomable" />
+    </div>
+</section>
+
+<!-- Modal (janela de imagem ampliada) -->
+<div id="modal" class="modal">
+  <span class="fechar">&times;</span>
+  <img class="modal-content" id="imgAmpliada" alt="Imagem ampliada" />
+</div>
+
+    <!-- Contato -->
+    <section id="contato">
+      <h2>Fale Conosco</h2>
+      <div class="contact">
+        <a class="chip" href="https://wa.me/4288227069" target="_blank"> <i class="fa-brands fa-whatsapp"></i> (42) 8822-7069</a>
+        <a class="chip" href="https://wa.me/4288227069" target="_blank" rel="noopener">💬 WhatsApp</a> <!-- trocar o whats pelo facebook -->
+        <a class="chip" href="https://maps.app.goo.gl/rpS5CVj8shULVEug9" target="_blank" rel="noopener">📍 Localização </a>
+      </div>
+      <div class="hours">
+        <p><strong>Horário:<br></strong></p>
+        <ul class="list">
+          <li class="item"><span class="info"><span class="name">Seg a Sex<br></span><span class="desc">08:45 — 18:00</span></span></li><br>
+          <li class="item"><span class="info"><span class="name">Sábado<br></span><span class="desc">09:00 — 17:00</span></span></li><br>
+          <li class="item"><span class="info"><span class="name">Domingo<br></span><span class="desc">Fechado</span></span></li><br>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Rolagem suave
+    document.querySelectorAll('a[href^=\"#\"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        const el=document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // Modal de imagem
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("imgAmpliada");
+    const imagens = document.querySelectorAll(".zoomable");
+    const fechar = document.querySelector(".fechar");
+
+    imagens.forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    fechar.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
